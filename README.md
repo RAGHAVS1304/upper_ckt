@@ -1,16 +1,14 @@
-# MediMitra (CRA demo)
+#  MediMitra (CRA Demo) – SIH Project
 
-This is a demo Create-React-App project scaffold for the MediMitra UI you provided.
+Developed as part of the **Smart India Hackathon (SIH)**, it's a **healthcare platform** with multiple features.
 
-Features:
-- CRA setup (use `npm install` then `npm start`)
-- React Router pages: Home, Centres, Records
-- Sign In / Sign Up pages (frontend only)
-- Language switcher using i18next (English + Hindi)
+---
 
-To run:
-1. unzip and `cd` into project
-2. run `npm install`
-3. run `npm start`
+## ✨ Features
+- 🔐 **User Authentication**: Sign In / Sign Up
+- 🌍 **Multilingual Support**: i18next for English + Hindi
+- 🤖 **Multilingual Chatbot**: Symptom checker with input-based responses and downloadable PDF report
+- 📹 **Video Conferencing**: For doctor-patient consultations
+- 🏥 **Nearby Hospitals Search**
 
-This is frontend-only. You can extend it to call APIs later.
+---
