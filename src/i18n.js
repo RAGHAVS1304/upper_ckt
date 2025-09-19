@@ -4,11 +4,12 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   en: {
     translation: {
+      "slogan" : "Your Village, Your Doctor",
       "brand": "MediMitra",
       "home": "Home",
       "locate": "Locate Nearby Centres",
       "records": "My Records",
-      "check": "Check Your Health",
+      "check": "Connect with Doctor",
       "find_medicine": "Find Medicine",
       "medical_history": "Medical History",
       "signin": "Sign In",
@@ -23,11 +24,12 @@ const resources = {
   },
   hi: {
     translation: {
+      "slogan" : "आपका गाँव, आपका डॉक्टर",
       "brand": "MediMitra",
       "home": "होम",
       "locate": "नज़दीकी केंद्र खोजें",
       "records": "मेरे रिकॉर्ड",
-      "check": "अपना स्वास्थ्य जाँचें",
+      "check": "डॉक्टर से जुड़ें",
       "find_medicine": "दवा खोजें",
       "medical_history": "चिकित्सा इतिहास",
       "signin": "साइन इन",
@@ -42,6 +44,7 @@ const resources = {
   },
   pa: {
     translation: {
+      "slogan" : "ਤੁਹਾਡਾ ਪਿੰਡ, ਤੁਹਾਡਾ ਡਾਕਟਰ",
       "brand": "MediMitra",
       "home": "ਹੋਮ",
       "locate": "ਨੇੜਲੇ ਕੇਂਦਰ ਲੱਭੋ",

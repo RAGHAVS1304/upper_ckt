@@ -21,10 +21,10 @@ def chat(request):
         
         thread_id = request.session["thread_id"]
         
-        raw_response,follow_ups,intent = run_agent(user_query, thread_id)
-        response = markdown.markdown(raw_response.content)
+        response,follow_ups = run_agent(user_query, thread_id)
+        
 
-        return JsonResponse({"response": response,"follow_ups":follow_ups,"intent":intent})
+        return JsonResponse({"response": response,"follow_ups":follow_ups})
     
     return JsonResponse({"error": "Invalid request method."}, status=405)
 

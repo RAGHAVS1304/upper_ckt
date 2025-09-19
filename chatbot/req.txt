@@ -1,0 +1,15 @@
+# Core
+python-dotenv
+typing_extensions
+
+# LangChain ecosystem
+langchain
+langchain-core
+langchain-openai
+langgraph
+
+# OpenAI API
+openai
+
+# Utils
+pydantic

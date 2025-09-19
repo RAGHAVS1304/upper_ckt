@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'chatbot',
+    'agents',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
 ]
 
 ROOT_URLCONF = 'chatbot.urls'
@@ -124,19 +129,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-load_dotenv()
-db_host = os.getenv("POSTGRES_DB_HOST")
-db_user = os.getenv("POSTGRES_DB_USER")
-db_password = os.getenv("POSTGRES_DB_PASSWORD")
-db_port = os.getenv("POSTGRES_DB_PORT")
-db_name = os.getenv("POSTGRES_DB_NAME")
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': db_name,
-        'USER': db_user,
-        'PASSWORD': db_password,
-        'HOST': db_host,  # Use the service name of the PostgreSQL container
-        'PORT': db_port,  # Default is 5432
-    }
-}
+

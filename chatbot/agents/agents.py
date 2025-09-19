@@ -9,7 +9,7 @@ from langchain_openai import ChatOpenAI
 from langgraph.graph import StateGraph, START, END
 from typing import List, Dict
 from langgraph.checkpoint.memory import MemorySaver
-from .helper import run_query_multi_pgvector
+
 
 # === Load Environment Variables ===
 load_dotenv()
@@ -28,7 +28,8 @@ memory = MemorySaver()
 class State(TypedDict):
     query: str
     response: str
-    thread_id: str 
+    thread_id: str
+    lang: str 
     history: List[str]
     history_text :str
     follow_ups: List[str]
@@ -321,13 +322,13 @@ def curation_query(state):
 def query_rephraser(state):
     query = state["query"]
     history = state["history"]
-    global lang
+    
     lang = detect_lang(state)
     
     prompt = f"""
         You are an expert multilingual query optimizer and translator for AI and Retrieval-Augmented Generation (RAG) systems.
 
-        Your task is to rewrite the user’s query in ENGLISH, regardless of whether the input is in English, Hindi, or Punjabi. Follow these rules:
+        Your task is to rewrite the user's query in ENGLISH, regardless of whether the input is in English, Hindi, or Punjabi. Follow these rules:
 
         - Translate Hindi or Punjabi queries into fluent, natural English.
         - Correct grammar, spelling, and phrasing.
@@ -359,6 +360,7 @@ def query_rephraser(state):
     print("new query",query)
     return {
         "query": query
+        ,"lang":lang
     }
 
 def response_translator(state):
@@ -550,6 +552,7 @@ def run_agent(query: str,thread_id: str) -> str:
             "history_text":"",
             "history": state['channel_values']['history'],
             "best_chunk":"",
+            lang:"",
         }
     else:
         inputs = {
@@ -559,8 +562,9 @@ def run_agent(query: str,thread_id: str) -> str:
             "history": [],
             "best_chunk":"",
             "intent":"",
+            lang:"",
             "history_text":"",   
         }
 
     result = app.invoke(inputs,config = {"configurable": {"thread_id": thread_id}})
-    return result["response"],follow_ups, intent
+    return result["response"],follow_ups
